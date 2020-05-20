@@ -7,7 +7,6 @@
  const express = require("express");
  const app = express();
  const http = require("http").createServer(app);
- //HUHU
  app.get('/', (req, res) => {
      console.log("Hello Bilal!");
  });
