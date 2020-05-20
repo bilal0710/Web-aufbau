@@ -11,7 +11,6 @@
  app.get('/', (req, res) => {
      console.log("Hello World!");
  });
- //komment
 
  http.listen(3000, function() {
      console.log('App listing at http://localhost:3000');
