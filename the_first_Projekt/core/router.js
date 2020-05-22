@@ -1,3 +1,9 @@
+ /**
+  * @author Bilal Alnaani
+  * @version 1.0.0
+  * @description Core Routes handling, used to generate express routes and also helper methods for params and url creation.
+  */
+
  class Router {
 
      constructor(app, routes) {
