@@ -1,15 +1,16 @@
 {
-    "name": "web-aufbau",
+    "name": "hello_world_node",
     "version": "1.0.0",
     "description": "",
     "main": "index.js",
+    "dependencies": {
+        "express": "^4.17.1"
+    },
+    "devDependencies": {},
     "scripts": {
         "start": "node index.js",
         "test": "echo \"Error: no test specified\" && exit 1"
     },
-    "author": "Bilal Alnaani",
-    "license": "ISC",
-    "dependencies": {
-        "express": "^4.17.1"
-    }
+    "author": "Bilal alnaani",
+    "license": "MIT"
 }

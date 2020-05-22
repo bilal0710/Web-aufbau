@@ -8,7 +8,7 @@
  const app = express();
  const http = require("http").createServer(app);
  app.get('/', (req, res) => {
-     console.log("Hello World!");
+     res.send("Hello Bilal!");
  });
  http.listen(3000, function() {
      console.log('App listing at http://localhost:3000');
