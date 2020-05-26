@@ -7,7 +7,7 @@ module.exports = {
         password: process.env.DB_PASSWORD || '',
         database: process.env.DB_NAME || 'taskboard',
         host: process.env.DB_HOST || 'localhost',
-        dialect: 'mysql'
+        dialect: 'mysql',
 
     },
     test: {
@@ -15,7 +15,7 @@ module.exports = {
         password: '',
         database: 'taskboard',
         host: 'localhost',
-        dialect: 'mysql'
+        dialect: 'mysql',
 
     },
     production: {
@@ -23,7 +23,7 @@ module.exports = {
         password: '',
         database: 'taskboard',
         host: 'localhost',
-        dialect: 'mysql'
+        dialect: 'mysql',
 
     }
 
