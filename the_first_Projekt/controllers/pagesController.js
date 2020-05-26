@@ -17,6 +17,14 @@
          });
      }
 
+     actionImprint() {
+         const self = this;
+         self.render({
+             title: 'Imprint'
+
+         });
+     }
+
  }
 
  module.exports = PagesController;
