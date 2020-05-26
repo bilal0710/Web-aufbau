@@ -5,6 +5,9 @@
   *  
   */
 
+ const ejs = require('ejs');
+ const path = require('path');
+
  class Controller {
 
      constructor(router, req, res, action) {
@@ -18,7 +21,28 @@
 
      render(params, opts = {}) {
          const self = this;
-         self.res.send(params);
+
+         let controllerName = (self.constructor.name.charAt(0).toLowerCase() + self.constructor.name.slice(1)).replace('Controller', '');
+         let filePath = path.join(__dirname, '..', 'views', controllerName, self.action + '.html.ejs');
+
+         ejs.renderFile(filePath, params, {}, (err, htmlStr) => {
+             if (err) {
+                 console.error(err);
+             } else {
+
+                 params.body = htmlStr;
+
+                 let layoutFilePath = path.join(__dirname, '..', 'views', 'layout.html.ejs');
+
+                 ejs.renderFile(layoutFilePath, params, {}, (err, htmlStr) => {
+                     if (err) {
+                         console.error(err);
+                     } else {
+                         self.res.send(htmlStr);
+                     }
+                 });
+             }
+         });
      }
 
  }

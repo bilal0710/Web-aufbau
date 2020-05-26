@@ -11,7 +11,10 @@
 
      actionIndex() {
          const self = this;
-         self.render('Hello World!');
+         self.render({
+             title: 'Hello World'
+
+         });
      }
 
  }
