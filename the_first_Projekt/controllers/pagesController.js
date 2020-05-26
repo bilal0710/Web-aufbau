@@ -4,20 +4,14 @@
   * @description PagesController fpr default pages like home, login privacy terms ....
   */
 
- class PagesController {
+ const Controller = require('../core/controller.js');
 
-     constructor(router, req, res, action) {
-         const self = this;
+ class PagesController extends Controller {
 
-         self.router = router;
-         self.req = req;
-         self.res = res;
-         self.action = action;
-     }
 
      actionIndex() {
          const self = this;
-         self.res.send('Hello World!');
+         self.render('Hello World!');
      }
 
  }
