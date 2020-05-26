@@ -8,6 +8,22 @@
 
  class PagesController extends Controller {
 
+     constructor(...args) {
+         super(...args);
+
+         const self = this;
+
+         self.before(['*', '-imprint'], (next) => {
+             console.log('all pages');
+
+             next();
+         });
+
+         self.before('index', (next) => {
+             console.log('only index');
+             next();
+         });
+     }
 
      actionIndex() {
          const self = this;
