@@ -1,2 +1,10 @@
 <h1>Meine Index</h1>
 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam ipsam placeat ipsa sapiente dolorem, rem minus a quod iste molestias repellat, tempore aliquid earum, quidem voluptatibus ipsum ea imped.</p>
+
+<ul>
+    <% for(let index = 0; index < users.length; ++index) { %>
+        <li>
+            <%=users[index].fullname()%>
+        </li>
+        <% } //end for%>
+</ul>

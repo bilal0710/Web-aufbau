@@ -6,12 +6,13 @@
 
 class Router {
 
-    constructor(app, routes) {
+    constructor(app, routes, database) {
         const self = this;
 
         self.app = app;
         self.routes = routes;
         self.hashMap = [];
+        self.database = database;
     }
 
     setup() {

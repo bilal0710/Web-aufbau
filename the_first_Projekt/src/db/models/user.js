@@ -1,24 +1,24 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-    const User = sequelize.define('user', {
+    const User = sequelize.define('User', {
         firstName: {
             type: DataTypes.STRING,
-            allowNull: false,
+            allowNull: false
         },
         lastName: {
             type: DataTypes.STRING,
-            allowNull: false,
+            allowNull: false
         },
         email: {
             type: DataTypes.STRING,
-            allowNull: false,
+            allowNull: false
         },
         permission: {
             allowNull: false,
             type: DataTypes.INTEGER,
             defaultValue: 0,
             comment: 'bit mask of permission from 2^0 until 2^30'
-        },
+        }
 
     }, {
         tableName: 'user'

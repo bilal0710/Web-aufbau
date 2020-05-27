@@ -26,6 +26,9 @@ class Controller {
 
         self.beforeList = [];
     }
+    get db() {
+        return this.router.database;
+    }
 
     before(actions, fn) {
         const self = this;

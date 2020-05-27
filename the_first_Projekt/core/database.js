@@ -6,6 +6,10 @@
 
 
 
+const Sequelize = require('sequelize');
+const path = require('path');
+const fs = require('fs');
+
 module.exports = function() {
     const Sequelize = require('sequelize');
     const sequelize = new Sequelize('taskboard', 'root', '', {
@@ -24,20 +28,32 @@ module.exports = function() {
         Sequelize: Sequelize,
         Sequelize: sequelize
     };
-    const User = sequelize.define('user', {
-        firstName: {
-            type: Sequelize.STRING,
-            allowNull: false
-        },
-        lastName: {
-            type: Sequelize.STRING,
-            allowNull: false
+
+    let modelsPath = path.join(__dirname, '..', 'src', 'db', 'models');
+    let files = fs.readdirSync(modelsPath);
+
+    files = files.filter(file => {
+        return (file.indexOf('.') !== 0 && file.slice(-3) === '.js');
+    });
+    files.forEach(file => {
+        const model = sequelize.import(path.join(modelsPath, file));
+        try {
+            let filePath = path.join(__dirname, '..', 'models', model.name + '.js');
+            if (fs.existsSync(filePath)) {
+                require(filePath)(model);
+            }
+
+        } catch (err) {
+            console.error(err);
         }
-    }, {
-        tableName: 'user'
+        db[model.name] = model;
     });
 
-
+    Object.keys(db).forEach(modelName => {
+        if (db[modelName].associate) {
+            db[modelName].associate(db);
+        }
+    })
 
     return db;
 };

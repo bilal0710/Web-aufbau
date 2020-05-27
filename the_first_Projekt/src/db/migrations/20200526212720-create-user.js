@@ -10,22 +10,22 @@ module.exports = {
             },
             firstName: {
                 type: Sequelize.STRING,
-                allowNull: false,
+                allowNull: false
             },
             lastName: {
                 type: Sequelize.STRING,
-                allowNull: false,
+                allowNull: false
             },
             email: {
                 type: Sequelize.STRING,
-                allowNull: false,
+                allowNull: false
             },
             createdAt: {
-                allowNull: false,
+                allowNull: true,
                 type: Sequelize.DATE
             },
             updatedAt: {
-                allowNull: false,
+                allowNull: true,
                 type: Sequelize.DATE
             },
             permission: {
@@ -33,7 +33,7 @@ module.exports = {
                 type: Sequelize.INTEGER,
                 defaultValue: 0,
                 comment: 'bit mask of permission from 2^0 until 2^30'
-            },
+            }
         });
     },
     down: (queryInterface, Sequelize) => {

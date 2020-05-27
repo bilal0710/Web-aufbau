@@ -27,9 +27,11 @@
 
      actionIndex() {
          const self = this;
-         self.render({
-             title: 'Hello World'
-
+         self.db.User.findAll().then(users => {
+             self.render({
+                 title: 'Hello World',
+                 users: users
+             });
          });
      }
 
