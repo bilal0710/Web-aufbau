@@ -8,6 +8,12 @@ const express = require('express');
 const app = express();
 const http = require('http').createServer(app);
 
+const bodyParser = require('body-parser');
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+
+app.use('/assets', express.static('assets'));
+
 const database = require('./core/database.js')();
 
 const routes = require('./config/routes.js');
