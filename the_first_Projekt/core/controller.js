@@ -130,8 +130,6 @@ class Controller {
             return self.req.query[key];
         } else if (self.req.body && self.req.body[key] !== undefined) {
             return self.req.body[key];
-        } else if (self.req.body && self.req.body[key] !== undefined) {
-            return self.req.body[key];
         }
 
         return self.req.params[key];

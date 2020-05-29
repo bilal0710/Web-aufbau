@@ -18,8 +18,8 @@
      'api/users': {
          controller: ApiUsersController,
          actions: [
-             { path: '/api/users', action: 'index', method: 'GET' },
-             { path: '/api/users/:id', action: 'show', method: 'GET' }
+             { path: '/api/users', action: 'index', method: 'GET' }, // für alle Users
+             { path: '/api/users/:id', action: 'show', method: 'GET' } // für one User
          ]
      }
  }

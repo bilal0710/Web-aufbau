@@ -1,7 +1,7 @@
 /**
  * @author Bilal Alnaani 
  * @version 1.0.0
- * @description API useres controller used to handle the model 
+ * @description API useres controller used to handle the model ressource
  */
 
 const Controller = require('../../core/controller.js')
@@ -42,6 +42,7 @@ class ApiUsersController extends Controller {
         }
     }
 
+    // um ein User zu zeigen
     async actionShow() {
         const self = this;
 
