@@ -5,7 +5,9 @@
  *  
  */
 
+// ejs für die HTML-Content
 const ejs = require('ejs');
+//um den code in allen Betriebssysteme durchzuführen (Windows, macOS, Linux)
 const path = require('path');
 
 const defaultRenderOptions = {
