@@ -11,7 +11,7 @@ const ejs = require('ejs');
 const path = require('path');
 
 const defaultRenderOptions = {
-    statusCode: 200,
+    statusCode: 200, // 200 heißt dass die Seite erreichbar ist und keine Fehler hat
     layout: true,
     layoutFileName: 'layout.html.ejs'
 };
@@ -52,6 +52,7 @@ class Controller {
         if (index >= self.beforeList.length) {
             cb();
         } else {
+
             self.executeBefore(self.beforeList[index], () => {
                 process.nextTick(function() {
                     self.executeBeforeList(cb, ++index);

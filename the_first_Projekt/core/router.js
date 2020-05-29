@@ -54,7 +54,6 @@ class Router {
                     hash += urlParams.join('');
                 }
                 self.hashMap[hash] = action.path;
-                console.log("setupMethode: " + self.hashMap[hash]);
             }
         }
     }
@@ -63,7 +62,6 @@ class Router {
     urlFor(controller, action, params = null, method = 'GET') {
         const self = this;
         let hash = controller + action + method.toLowerCase();
-        console.log(hash);
         let paramsKeys = null;
         if (params !== null) {
             paramsKeys = Object.keys(params).sort();
@@ -74,7 +72,6 @@ class Router {
         if (self.hashMap[hash]) {
 
             path = self.hashMap[hash];
-            console.log(self.hashMap[hash]);
             if (paramsKeys !== null) {
 
                 for (let index = 0; index < paramsKeys.length; ++index) {

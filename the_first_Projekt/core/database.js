@@ -5,13 +5,13 @@
  */
 
 
+// Sequelize ist die Schnittstelle mit der DB, sie hat alle wichtigen Befehle, die man am meisten nutzt
 
 const Sequelize = require('sequelize');
 const path = require('path');
 const fs = require('fs');
 
 module.exports = function() {
-    const Sequelize = require('sequelize');
     const sequelize = new Sequelize('taskboard', 'root', '', {
         host: 'localhost',
         dialect: 'mysql',

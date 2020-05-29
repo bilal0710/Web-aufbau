@@ -1,5 +1,5 @@
 'use strict';
-
+//npx sequelize-cli db:seed:all (die Datenzeile hinzufügen)
 module.exports = {
     up: (queryInterface, Sequelize) => {
         return queryInterface.bulkInsert('user', [{

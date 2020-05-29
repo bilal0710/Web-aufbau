@@ -1,5 +1,12 @@
 'use strict';
+// diese Migration wird Automatisch erzeugt mit einer Befehl
+//npx sequekize-cli model: generate --name User (name der Modul) --attribute firstName:string,lastName:string,email:string
+//damit wird auch das Modul automatisch erzeugt aber muss man es einbisschen bearbeiten
+//um diese Tablle in der DB hinzufügen, muss man sie mit einem andern Befehl hinfügt, 
+//npx sequelize-cli db:migrate
+//npx sequelize-cli db:migrate:undo (um sie zu löschen)
 module.exports = {
+
     up: (queryInterface, Sequelize) => {
         return queryInterface.createTable('user', {
             id: {
