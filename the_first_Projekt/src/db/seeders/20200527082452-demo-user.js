@@ -1,4 +1,5 @@
 'use strict';
+// erst die Datai hinfügen mit dem Befehl npx sequelize-cli seed:generate --name demo-user
 //npx sequelize-cli db:seed:all (die Datenzeile hinzufügen)
 module.exports = {
     up: (queryInterface, Sequelize) => {

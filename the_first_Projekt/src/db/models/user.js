@@ -29,7 +29,15 @@ module.exports = (sequelize, DataTypes) => {
     });
 
     User.associate = function(models) {
-        // associations can be defined here
+        User.hasMany(models.Task, {
+            as: 'taskCreated',
+            foreignKey: 'creatorId'
+        });
+
+        User.hasMany(models.Task, {
+            as: 'tasksAssignedTo',
+            foreignKey: 'assignedToId'
+        });
     };
     return User;
 };
