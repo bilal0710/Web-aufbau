@@ -28,32 +28,35 @@ module.exports = function() {
         Sequelize: Sequelize,
         Sequelize: sequelize
     };
-    // wir haben hier die Path, wo die Models von der Schnittstelle mit der db sind
+    // wir haben hier das Path, wo die Models von der Schnittstelle mit der db sind
     let modelsPath = path.join(__dirname, '..', 'src', 'db', 'models');
     let files = fs.readdirSync(modelsPath);
 
-    //es gibt Datai, die wir nicht nutzen und fangen immer mit (.), die wollten wir filtern
+    //es gibt Datai, die automatisch hingefügt werden und wir nicht wirklich nutzen, sie fangen immer mit (.), die wollten wir filtern
     files = files.filter(file => {
         return (file.indexOf('.') !== 0 && file.slice(-3) === '.js');
     });
+
     files.forEach(file => {
         const model = sequelize.import(path.join(modelsPath, file));
-
-        try {
-            let filePath = path.join(__dirname, '..', 'models', model.name + '.js');
-            if (fs.existsSync(filePath)) {
-                require(filePath)(model);
-            }
-
-        } catch (err) {
-            console.error(err);
-        }
         db[model.name] = model;
 
     });
 
     //wir werden es später nutzen 
     Object.keys(db).forEach(modelName => {
+
+        try {
+            let filePath = path.join(__dirname, '..', 'models', modelName + '.js');
+            if (fs.existsSync(filePath)) {
+
+                require(filePath)(db[modelName], db);
+            }
+
+        } catch (err) {
+            console.error(err);
+        }
+
         if (db[modelName].associate) {
             db[modelName].associate(db);
         }

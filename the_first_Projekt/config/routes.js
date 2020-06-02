@@ -6,6 +6,8 @@
 
  const PagesController = require('../controllers/pagesController.js');
  const ApiUsersController = require('../controllers/api/usersController.js');
+ const ApiTasksController = require('../controllers/api/tasksController.js');
+
 
  let routes = {
      'pages': {
@@ -20,6 +22,13 @@
          actions: [
              { path: '/api/users', action: 'index', method: 'GET' }, // für alle Users
              { path: '/api/users/:id', action: 'show', method: 'GET' } // für one User
+         ]
+     },
+     'api/tasks': {
+         controller: ApiTasksController,
+         actions: [
+             { path: '/api/tasks', action: 'index', method: 'GET' }, // für alle Tasks
+             { path: '/api/tasks/:id', action: 'show', method: 'GET' } // für one Task
          ]
      }
  }
