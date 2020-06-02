@@ -21,4 +21,28 @@ module.exports = function(Model, db) {
             separate: false
         },
     ];
+
+    Model.prototype.writeRemotes = function(data) {
+        const self = this;
+
+        if (typeof data.name !== 'undefined') {
+            self.name = data.name;
+        }
+
+        if (typeof data.text !== 'undefined') {
+            self.text = data.text;
+        }
+
+        if (typeof data.creatorId !== 'undefined') {
+            self.creatorId = data.creatorId;
+        }
+
+        if (typeof data.assignedToId !== 'undefined') {
+            self.assignedToId = data.assignedToId;
+        }
+
+        if (typeof data.projectId !== 'undefined') {
+            self.projectId = data.projectId;
+        }
+    }
 };

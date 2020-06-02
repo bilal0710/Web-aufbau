@@ -32,6 +32,7 @@
          controller: ApiTasksController,
          actions: [
              { path: '/api/tasks', action: 'index', method: 'GET' }, // für alle Tasks
+             { path: '/api/tasks', action: 'create', method: 'POST' },
              { path: '/api/tasks/:id', action: 'show', method: 'GET' } // für one Task
          ]
      },

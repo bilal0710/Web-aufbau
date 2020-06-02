@@ -18,11 +18,11 @@ class ApiProjectsController extends Controller {
     async actionIndex() {
         const self = this;
 
-        let project = [];
+        let projects = [];
         let error = null;
 
         try {
-            project = await self.db.Project.findAll({
+            projects = await self.db.Project.findAll({
                 where: {}
             });
         } catch (err) {
@@ -37,7 +37,7 @@ class ApiProjectsController extends Controller {
             });
         } else {
             self.render({
-                project: project
+                projects: projects
             });
         }
     }

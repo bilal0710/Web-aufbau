@@ -78,6 +78,75 @@ class ApiTasksController extends Controller {
             });
         }
     }
+    async actionShow() {
+        const self = this;
+
+        let taskId = self.param('id');
+        let task = null;
+        let error = null;
+
+        try {
+            task = await self.db.Task.findOne({
+                where: {
+                    id: taskId
+                },
+                attributes: ['id', 'name', 'createdAt', 'updatedAt'],
+                include: self.db.Task.extendInclude
+            });
+        } catch (err) {
+            error = err;
+        }
+
+        if (error !== null) {
+            console.error(error);
+            self.render({
+                details: error
+            }, {
+                statusCode: 500
+            });
+        } else {
+            self.render({
+                task: task
+            });
+        }
+    }
+
+    async actionCreate() {
+        const self = this;
+
+        let remoteData = self.param('task');
+
+        let task = null;
+        let error = null;
+
+        try {
+            task = await self.db.sequelize.transaction(async(t) => {
+                let newTask = self.db.Task.build();
+                newTask.writeRemotes(remoteData);
+
+                await newTask.save({
+                    transaction: t
+                });
+
+                return newTask;
+            });
+        } catch (err) {
+            error = err;
+        }
+
+        if (error !== null) {
+            console.error(error);
+            self.render({
+                details: error
+            }, {
+                statusCode: 500
+            });
+        } else {
+            self.render({
+                task: task
+            });
+        }
+    }
 }
 
 module.exports = ApiTasksController;
