@@ -25,6 +25,7 @@
          controller: ApiUsersController,
          actions: [
              { path: '/api/users', action: 'index', method: 'GET' }, // für alle Users
+             { path: '/api/users', action: 'create', method: 'POST' },
              { path: '/api/users/:id', action: 'show', method: 'GET' } // für one User
          ]
      },

@@ -73,6 +73,45 @@ class ApiUsersController extends Controller {
             });
         }
     }
+
+    async actionCreate() {
+        const self = this;
+
+        let remoteData = self.param('user');
+
+        let user = null;
+        let error = null;
+
+        try {
+            user = await self.db.Sequelize.transaction(async(t) => {
+
+                let newUser = self.db.User.build();
+                newUser.writeRemotes(remoteData);
+
+                await newUser.save({
+                    transaction: t
+                });
+
+                return newUser;
+            });
+        } catch (err) {
+            error = err;
+        }
+
+        if (error !== null) {
+            console.error(error);
+            self.render({
+                details: error
+            }, {
+                statusCode: 500
+            });
+
+        } else {
+            self.render({
+                user: user
+            });
+        }
+    }
 }
 
 module.exports = ApiUsersController;
