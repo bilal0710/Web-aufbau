@@ -8,6 +8,9 @@ const express = require('express');
 const app = express();
 const http = require('http').createServer(app);
 
+// write global Configuration
+global.cfg = require('./config/config.js');
+
 const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());

@@ -4,6 +4,8 @@
  * @description API useres controller used to handle the model ressource
  */
 
+// um das Programm automatisch zu starten, können wir den Befehl npx nodemon ./index.js
+
 const Controller = require('../../core/controller.js')
 
 class ApiUsersController extends Controller {
