@@ -120,7 +120,8 @@ class ApiTasksController extends Controller {
         let error = null;
 
         try {
-            task = await self.db.sequelize.transaction(async(t) => {
+            task = await self.db.Sequelize.transaction(async(t) => {
+
                 let newTask = self.db.Task.build();
                 newTask.writeRemotes(remoteData);
 
@@ -141,6 +142,7 @@ class ApiTasksController extends Controller {
             }, {
                 statusCode: 500
             });
+
         } else {
             self.render({
                 task: task
